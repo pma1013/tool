@@ -5,8 +5,16 @@ import re
 import os
 
 OUT_FILE = "query_out.log"
-QUERY_LOG_FILE = "query.log_parse_tmp"
+QUERY_LOG_FILE = "query.log_parse_split"
 
+def parse_query(query):
+
+    qdic = defaultdict(list)
+    query_split = [param.split('=') for param in query.split('&')]
+    for param in query_split:
+        qdic[param[0]].append(param[1])
+
+    return qdic
 
 def queryParamBuilder(qdic):
     #import pdb; pdb.set_trace()
