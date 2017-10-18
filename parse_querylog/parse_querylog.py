@@ -12,7 +12,7 @@ def parse_query(query):
     qdic = defaultdict(list)
     query_split = [param.split('=') for param in query.split('&')]
     for param in query_split:
-        qdic[param[0]].append(param[1])
+        qdic[param[0]].append(param[1].rstrip('\n'))
 
     return qdic
 
